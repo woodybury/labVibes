@@ -1,13 +1,10 @@
-import pyaudio
 import os
 import listening
+import nlp
 # import simpleaudio as sa
 import speech_recognition as sr
 
 # searchsound = sa.WaveObject.from_wave_file('sound/search.wav')
-index = pyaudio.PyAudio().get_device_count() - 1
-
-print (index)
 
 r = sr.Recognizer()
 
@@ -20,6 +17,7 @@ else:
 def recognize_search():
     # playsound = searchsound.play()
     # playsound.wait_done()
+
     print ('listening for phrase')
     with mic as source:
         audio = r.listen(source)
@@ -37,9 +35,12 @@ def recognize_search():
         response["error"] = "unknown"
 
     if response['text']:
+        phrase = response['text']
+        print ('phrase is: ' + phrase)
 
-        phrase = response['text'].replace(" ", "_")
-        print ('phrase: ' + phrase)
+        # test nlp
+        video = nlp.similarity(phrase)
+        print (video)
 
 if __name__ == "__main__":
     while (1):
