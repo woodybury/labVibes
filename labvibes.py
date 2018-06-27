@@ -10,7 +10,11 @@ index = pyaudio.PyAudio().get_device_count() - 1
 print (index)
 
 r = sr.Recognizer()
-mic = sr.Microphone(1)
+
+if os.uname()[1] == 'raspberrypi':
+    mic = sr.Microphone(1)
+else:
+    mic = sr.Microphone()
 
 
 def recognize_search():
@@ -29,21 +33,15 @@ def recognize_search():
     except sr.RequestError:
         response["success"] = False
         response["error"] = "unavailable"
-        print ('error')
     except sr.UnknownValueError:
         response["error"] = "unknown"
-        print ('unknown')
 
     if response['text']:
 
         phrase = response['text'].replace(" ", "_")
         print ('phrase: ' + phrase)
-    else:
-        print('idk')
-
-    audio.stop_stream()
 
 if __name__ == "__main__":
     while (1):
         print ('listening for keyword projector')
-        listening.recognition(recognize_search, 'projector', False)
+        listening.recognition(recognize_search, 'projector')

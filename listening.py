@@ -3,20 +3,21 @@ from pocketsphinx import pocketsphinx
 from sphinxbase.sphinxbase import *
 import pyaudio
 
-# Start a pyaudio instance
-p = pyaudio.PyAudio()
-# Create an input stream with pyaudio - if on raspi use index 1 for google voice hat mic
-if os.uname()[1] == 'raspberrypi':
-    stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, input_device_index=1, frames_per_buffer=1024)
-    print('stream started on rpi')
-else:
-    stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=1024)
-    print ('stream started')
-# Start the stream
-stream.start_stream()
+# continue listening with sphinx
+def recognition(keyphrase_function, key_phrase):
 
-# added 'loop' as arg this is true or false
-def recognition(keyphrase_function, key_phrase, loop):
+    # Start a pyaudio instance
+    p = pyaudio.PyAudio()
+    # Create an input stream with pyaudio - if on raspi use index 1 for google voice hat mic
+    if os.uname()[1] == 'raspberrypi':
+        stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, input_device_index=1, frames_per_buffer=1024)
+        print('stream started on rpi')
+    else:
+        stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=1024)
+        print ('stream started')
+
+    # Start the stream
+    stream.start_stream()
 
     modeldir = "data/files/sphinx/models"
 
@@ -48,12 +49,8 @@ def recognition(keyphrase_function, key_phrase, loop):
         # If the hypothesis is not none, the key phrase was recognized
         if decoder.hyp() is not None:
             decoder.end_utt()
-            stream.stop_stream()    # "Stop Audio Recording
-            stream.close()          # "Close Audio Recording
-            keyphrase_function()
-            if loop:
-                # Stop and reinitialize the decoder if loop is on
-                decoder.start_utt()
-            else:
-                # else end and send true
-                return True
+            stream.stop_stream()    # Stop Audio Recording
+            stream.close()          # Close Audio Recording
+            keyphrase_function()    # Call back
+
+            return True
