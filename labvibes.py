@@ -1,4 +1,5 @@
 import os
+import time
 # import cv2
 import webbrowser
 # import threading
@@ -56,9 +57,12 @@ def recognize_search():
         # t.start()
 
 def playvideo(video_file):
-
-    webbrowser.open(video_file)
-
+    print (video_file)
+    # webbrowser.open(video_file)
+    os.system('pkill chromium-browser')
+    video_cmd = 'chromium-browser --app=' + video_file
+    os.system(video_cmd)
+    time.sleep(5)
     # cap = cv2.VideoCapture(video_file)
     #
     # while(cap.isOpened()):
