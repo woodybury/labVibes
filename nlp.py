@@ -8,7 +8,7 @@ videos = {
     },
 
     "ocean" : {
-        "file_name" : "ocean.mpg",
+        "file_name" : "ocean.mp4",
         "desc"      : "Tropical fishes swimming in the coral with sunlight shimmering in the ocean water"
     }
 }
