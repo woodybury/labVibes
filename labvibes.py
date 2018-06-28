@@ -1,4 +1,7 @@
 import os
+# import cv2
+import webbrowser
+# import threading
 import listening
 import nlp
 # import simpleaudio as sa
@@ -38,11 +41,39 @@ def recognize_search():
         phrase = response['text']
         print ('phrase is: ' + phrase)
 
-        # test nlp
+        # nlp
         video = nlp.similarity(phrase)
-        print (video)
+
+        # play returned video
+        video_file = 'videos/' + video
+
+        playvideo(video_file)
+
+        # t = threading.Thread(target=playvideo, args = (video_file,))
+        # t.daemon = True
+        # t.start()
+
+def playvideo(video_file):
+
+    webbrowser.open(video_file)
+
+    # cap = cv2.VideoCapture(video_file)
+    #
+    # while(cap.isOpened()):
+    #     ret, frame = cap.read()
+    #
+    #     cv2.imshow('Lab Vibes',frame)
+    #     if cv2.waitKey(1) & 0xFF == ord('q'):
+    #         break
+    #
+    # cap.release()
+    # cv2.destroyAllWindows()
 
 if __name__ == "__main__":
+
     while (1):
         print ('listening for keyword projector')
+        # t = threading.Thread(target=listening.recognition, args = (recognize_search, 'projector'))
+        # t.daemon = True
+        # t.start()
         listening.recognition(recognize_search, 'projector')
