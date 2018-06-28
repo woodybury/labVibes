@@ -17,6 +17,8 @@ else:
     mic = sr.Microphone()
 
 
+path =  os.getcwd()
+
 def recognize_search():
     # playsound = searchsound.play()
     # playsound.wait_done()
@@ -45,7 +47,7 @@ def recognize_search():
         video = nlp.similarity(phrase)
 
         # play returned video
-        video_file = 'videos/' + video
+        video_file = 'file://' + path + '/videos/' + video
 
         playvideo(video_file)
 
@@ -72,6 +74,7 @@ def playvideo(video_file):
 if __name__ == "__main__":
 
     while (1):
+
         print ('listening for keyword projector')
         # t = threading.Thread(target=listening.recognition, args = (recognize_search, 'projector'))
         # t.daemon = True
