@@ -3,7 +3,7 @@ nlp = spacy.load('en')
 
 videos = {
     "beach" : {
-        "file_name": "beach.mpg",
+        "file_name": "beach.mp4",
         "desc"     : "Gentle waves rolling up a sandy beach while sea birds fly in the sky"
     },
 
