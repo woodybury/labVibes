@@ -41,8 +41,10 @@ change `CONF_SWAPSIZE=100` to `CONF_SWAPSIZE=1024`
 
 `sudo raspi-config` choose advanced Options => Memory Split and set to 16
 
-DON'T FORGET TO UNDO THESE STEPS AFTER INSTALL => large swap sizes corrupt memory cards :) and we need the GPU for the videos later.
+DON'T FORGET TO UNDO THESE STEPS AFTER INSTALL
 
-Download the english model
+large swap sizes corrupt memory cards :) and we need the GPU for the videos later.
+
+#### Download the english model
 
 `sudo python3 -m spacy download en`
