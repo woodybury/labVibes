@@ -8,15 +8,19 @@ import nlp
 # import simpleaudio as sa
 import speech_recognition as sr
 
+if os.uname()[1] == 'raspberrypi':
+    raspi = True
+else:
+    raspi = False
+
 # searchsound = sa.WaveObject.from_wave_file('sound/search.wav')
 
 r = sr.Recognizer()
 
-if os.uname()[1] == 'raspberrypi':
+if raspi:
     mic = sr.Microphone(1)
 else:
     mic = sr.Microphone()
-
 
 path =  os.getcwd()
 
@@ -57,12 +61,17 @@ def recognize_search():
         # t.start()
 
 def playvideo(video_file):
-    print (video_file)
-    # webbrowser.open(video_file)
-    os.system('pkill chromium-browser')
-    video_cmd = 'chromium-browser --app=' + video_file
-    os.system(video_cmd)
-    time.sleep(5)
+    if raspi:
+        # os.system('pkill chromium-browser')
+        # video_cmd = 'chromium-browser --app=' + video_file + ' &'
+        os.system('pkill omxplayer')
+        video_cmd = 'omxplayer ' + video_file + ' &'
+        os.system(video_cmd)
+        time.sleep(1)
+    else:
+        webbrowser.open(video_file)
+
+    # Open CV imshow is throwing error when called not on the main thread. Trying omxplayer and chromium instead
     # cap = cv2.VideoCapture(video_file)
     #
     # while(cap.isOpened()):
@@ -78,9 +87,5 @@ def playvideo(video_file):
 if __name__ == "__main__":
 
     while (1):
-
         print ('listening for keyword projector')
-        # t = threading.Thread(target=listening.recognition, args = (recognize_search, 'projector'))
-        # t.daemon = True
-        # t.start()
         listening.recognition(recognize_search, 'projector')
