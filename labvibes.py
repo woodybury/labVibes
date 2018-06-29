@@ -24,7 +24,7 @@ else:
 
 path =  os.getcwd()
 
-def recognize_search():
+def recognize_phrase():
     # playsound = searchsound.play()
     # playsound.wait_done()
 
@@ -88,4 +88,4 @@ if __name__ == "__main__":
 
     while (1):
         print ('listening for keyword projector')
-        listening.recognition(recognize_search, 'projector')
+        listening.recognition(recognize_phrase, 'projector')
