@@ -65,7 +65,7 @@ def playvideo(video_file):
         # os.system('pkill chromium-browser')
         # video_cmd = 'chromium-browser --app=' + video_file + ' &'
         os.system('pkill omxplayer')
-        video_cmd = 'omxplayer ' + video_file + ' &'
+        video_cmd = 'omxplayer --loop' + video_file + ' &'
         os.system(video_cmd)
         time.sleep(1)
     else:
