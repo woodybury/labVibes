@@ -16,6 +16,10 @@ videos = {
         "file_name" : "fire.mp4",
         "desc"      : "Crackling campfire at dusk in the snowy mountains with river and wind"
 
+    },
+    "Symphony"{
+        "file_name" : "Symphony.mp4",
+        "desc"      : "Live symphony insturmental performance Pachelbel's canon with violins, cellos and other musical insturments"
     }
 }
 
