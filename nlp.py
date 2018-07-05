@@ -10,6 +10,12 @@ videos = {
     "ocean" : {
         "file_name" : "ocean.mp4",
         "desc"      : "Tropical fishes swimming in the coral with sunlight shimmering in the ocean water"
+    },
+
+    "fire" : {
+        "file_name" : "fire.mp4",
+        "desc"      : "Crackling campfire at dusk in the snowy mountains with river and wind"
+
     }
 }
 
