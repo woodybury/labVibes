@@ -12,8 +12,8 @@ videos = {
         "desc"      : "Tropical fishes swimming in the coral with sunlight shimmering in the ocean water"
     },
 
-    "space" : {
-        "file_name" : "space.mp4",
+    "outerspace" : {
+        "file_name" : "outerspace.mp4",
         "desc"      : "Space, universe, stars, galaxies, outer space travel with chill music"
     },
 
