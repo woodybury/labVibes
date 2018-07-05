@@ -88,4 +88,4 @@ if __name__ == "__main__":
 
     while (1):
         print ('listening for keyword projector')
-        listening.recognition(recognize_phrase, 'Bob')
+        listening.recognition(recognize_phrase, 'bob')
