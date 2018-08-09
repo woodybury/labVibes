@@ -1,5 +1,7 @@
 # Lab Vibes for the projector
 
+<img src="https://github.com/WoodburyShortridge/labVibes/blob/master/img/labvibes.png?raw=true" alt="lab vibes logo" />
+
 ## Add videos
 
 Put video fies in `/videos`
